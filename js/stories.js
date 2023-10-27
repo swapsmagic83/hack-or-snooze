@@ -36,19 +36,19 @@ function generateStoryMarkupNew(story, isFavorite,isMyStory) {
   const hostName = story.getHostName();
   
   return $(`
-    <li id="${story.storyId}">
+    <li id="${story.storyId}" class="list-group-item">
     <span class="trash-alt"> 
       ${newClass}
     </span>
       <span class="star"> 
       ${starClass}
       </span>
-      <a href="${story.url}" target="a_blank" class="story-link">
+      <a href="${story.url}" target="a_blank" class="story-link text-decoration-none">
         ${story.title}
       </a>
       <small class="story-hostname">(${hostName})</small>
-      <small class="story-author">by ${story.author}</small>
-      <small class="story-user">posted by ${story.username}</small>
+      <small class="story-author text-success d-block">by ${story.author}</small>
+      <small class="story-user text-warning d-block">posted by ${story.username}</small>
     </li>
       `);
 }

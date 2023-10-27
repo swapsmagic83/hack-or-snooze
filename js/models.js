@@ -138,7 +138,20 @@ async function deleteMyStory(storyId){
   })
   return res.data.story
 }
-
+async function updateStory(storyId){
+  let res = await axios({
+    url:`${BASE_URL}/stories/${storyId}`,
+    method: "PATCH",
+    data:{
+      token: currentUser.loginToken,
+      story: {
+        author: currentUser.author,
+        
+      }
+    }
+  })
+  console.log(res)
+}
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
@@ -222,7 +235,14 @@ class User {
       response.data.token
     );
   }
-
+  // static async getUser(username) {
+  //   const res= await axios({
+  //     url: `${BASE_URL}/users/${username}`,
+  //     method: "GET",
+  //     params:{username}
+  //   })
+  //   console.log(res)
+  // }
   /** When we already have credentials (token & username) for a user,
    *   we can log them in automatically. This function does that.
    */
@@ -255,3 +275,4 @@ class User {
 
 
 }
+
